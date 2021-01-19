@@ -51,7 +51,7 @@ class CustomButton extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         final snackBar = SnackBar(
-          content: Text("Connecting....!!!"),
+          content: Text("Next page Connecting....!!!"),
         );
 
         Scaffold.of(context).showSnackBar(snackBar);
