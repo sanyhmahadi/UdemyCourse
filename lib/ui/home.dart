@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 class Scafolder extends StatelessWidget {
@@ -22,6 +24,11 @@ class Scafolder extends StatelessWidget {
             onPressed: _onPressedButton(),
           )
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.green,
+        child: Icon(Icons.mail),
+        onPressed: null,
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: [
@@ -82,21 +89,21 @@ class CustomButton extends StatelessWidget {
   }
 }
 
-// class Home extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Material(
-//       color: Colors.redAccent,
-//       child: Center(
-//         child: Text(
-//           "Hello Sany",
-//           textDirection: TextDirection.ltr,
-//           style: TextStyle(
-//               fontWeight: FontWeight.w500,
-//               fontStyle: FontStyle.italic,
-//               fontSize: 25),
-//         ),
-//       ),
-//     );
-//   }
-// }
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.redAccent,
+      child: Center(
+        child: Text(
+          "Hello Sany",
+          textDirection: TextDirection.ltr,
+          style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontStyle: FontStyle.italic,
+              fontSize: 25),
+        ),
+      ),
+    );
+  }
+}
