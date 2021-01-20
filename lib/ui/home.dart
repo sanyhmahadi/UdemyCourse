@@ -23,6 +23,14 @@ class Scafolder extends StatelessWidget {
           )
         ],
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.sports_football_sharp), title: Text("FootBall")),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.sports_cricket_sharp), title: Text("Cricket"))
+        ],
+      ),
       backgroundColor: Colors.blueGrey,
       body: Container(
         alignment: Alignment.center,
@@ -51,7 +59,10 @@ class CustomButton extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         final snackBar = SnackBar(
-          content: Text("Next page Connecting....!!!"),
+          content: Text(
+            "Next page Connecting....!!!",
+          ),
+          backgroundColor: Colors.blue.shade700,
         );
 
         Scaffold.of(context).showSnackBar(snackBar);
@@ -71,21 +82,21 @@ class CustomButton extends StatelessWidget {
   }
 }
 
-class Home extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: Colors.redAccent,
-      child: Center(
-        child: Text(
-          "Hello Sany",
-          textDirection: TextDirection.ltr,
-          style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontStyle: FontStyle.italic,
-              fontSize: 25),
-        ),
-      ),
-    );
-  }
-}
+// class Home extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Material(
+//       color: Colors.redAccent,
+//       child: Center(
+//         child: Text(
+//           "Hello Sany",
+//           textDirection: TextDirection.ltr,
+//           style: TextStyle(
+//               fontWeight: FontWeight.w500,
+//               fontStyle: FontStyle.italic,
+//               fontSize: 25),
+//         ),
+//       ),
+//     );
+//   }
+// }
