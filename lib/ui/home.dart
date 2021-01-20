@@ -1,6 +1,72 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
+
+class BizCurd extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Biz Curd App"),
+      ),
+      body: Container(
+        alignment: Alignment.center,
+        child: Stack(
+          alignment: Alignment.topCenter,
+          children: [
+            _getContainer(),
+            _getavatar(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Container _getContainer() {
+    return Container(
+      width: 350,
+      height: 250,
+      margin: EdgeInsets.all(50.0),
+      decoration: BoxDecoration(
+          color: Colors.redAccent, borderRadius: BorderRadius.circular(15)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            "Md. Mahadi Hasan Sany",
+            style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.w600,
+                color: Colors.white),
+          ),
+          Text(
+            "sanykhan227@gmail.com",
+            style: TextStyle(fontWeight: FontWeight.w700),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.face_rounded),
+              Text("FaceBook: Sany H. Mahadi")
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  Container _getavatar() {
+    return Container(
+      width: 100,
+      height: 100,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(50.0)),
+          border: Border.all(color: Colors.redAccent, width: 1.2),
+          image: DecorationImage(
+              image: NetworkImage("https://bit.ly/2M5qpOP"),
+              fit: BoxFit.cover)),
+    );
+  }
+}
 
 class Scafolder extends StatelessWidget {
   _onPressedButton() {
@@ -26,7 +92,7 @@ class Scafolder extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.black,
         child: Icon(Icons.mail),
         onPressed: null,
       ),
@@ -89,21 +155,21 @@ class CustomButton extends StatelessWidget {
   }
 }
 
-class Home extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: Colors.redAccent,
-      child: Center(
-        child: Text(
-          "Hello Sany",
-          textDirection: TextDirection.ltr,
-          style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontStyle: FontStyle.italic,
-              fontSize: 25),
-        ),
-      ),
-    );
-  }
-}
+// class Home extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Material(
+//       color: Colors.redAccent,
+//       child: Center(
+//         child: Text(
+//           "Hello Sany",
+//           textDirection: TextDirection.ltr,
+//           style: TextStyle(
+//               fontWeight: FontWeight.w500,
+//               fontStyle: FontStyle.italic,
+//               fontSize: 25),
+//         ),
+//       ),
+//     );
+//   }
+// }
