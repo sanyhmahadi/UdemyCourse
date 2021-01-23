@@ -1,5 +1,76 @@
 import 'package:flutter/material.dart';
 
+int _index = 0;
+List quotes = [
+  "I'm selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can't handle me at my worst, then you sure as hell don't deserve me at my best.",
+  "Be yourself; everyone else is already taken.",
+  "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe."
+];
+
+class Wisdom extends StatefulWidget {
+  @override
+  _WisdomState createState() => _WisdomState();
+}
+
+class _WisdomState extends State<Wisdom> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        padding: EdgeInsets.all(30.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Center(
+                child: Container(
+                  width: 350,
+                  height: 200,
+                  margin: EdgeInsets.all(14.5),
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(14.5),
+                  ),
+                  child: Center(
+                      child: Text(
+                    quotes[_index % quotes.length],
+                    style: TextStyle(
+                        color: Colors.yellow.shade600, fontSize: 16.0),
+                  )),
+                ),
+              ),
+            ),
+            Divider(
+              thickness: 2.3,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                child: FlatButton.icon(
+                  onPressed: _quotes,
+                  icon: Icon(Icons.wb_sunny),
+                  color: Colors.green.shade500,
+                  label: Text(
+                    "Next..!!",
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
+            Spacer(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _quotes() {
+    setState(() {
+      _index++;
+    });
+  }
+}
+
 class BizCurd extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -155,21 +226,21 @@ class CustomButton extends StatelessWidget {
   }
 }
 
-// class Home extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Material(
-//       color: Colors.redAccent,
-//       child: Center(
-//         child: Text(
-//           "Hello Sany",
-//           textDirection: TextDirection.ltr,
-//           style: TextStyle(
-//               fontWeight: FontWeight.w500,
-//               fontStyle: FontStyle.italic,
-//               fontSize: 25),
-//         ),
-//       ),
-//     );
-//   }
-// }
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.redAccent,
+      child: Center(
+        child: Text(
+          "Hello Sany",
+          textDirection: TextDirection.ltr,
+          style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontStyle: FontStyle.italic,
+              fontSize: 25),
+        ),
+      ),
+    );
+  }
+}
