@@ -71,6 +71,12 @@ class _QuizAppState extends State<QuizApp> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 RaisedButton(
+                    onPressed: () => _previuosQuestion(),
+                    color: Colors.red,
+                    child: Icon(
+                      Icons.arrow_back,
+                    )),
+                RaisedButton(
                   onPressed: () => _checkAns(true, context),
                   color: Colors.red,
                   child: Text("TRUE"),
@@ -85,7 +91,7 @@ class _QuizAppState extends State<QuizApp> {
                     color: Colors.red,
                     child: Icon(
                       Icons.arrow_forward,
-                    ))
+                    )),
               ],
             ),
             Spacer(),
@@ -93,6 +99,14 @@ class _QuizAppState extends State<QuizApp> {
         ),
       ),
     );
+  }
+
+  _previuosQuestion() {
+    setState(() {
+      _currentQuesntionIndex =
+          (_currentQuesntionIndex - 1) % questionBank.length;
+      debugPrint("Index: $_currentQuesntionIndex");
+    });
   }
 
   _checkAns(bool userChoise, BuildContext context) {
@@ -104,6 +118,7 @@ class _QuizAppState extends State<QuizApp> {
         content: Text("You'r Correct"),
       );
       Scaffold.of(context).showSnackBar(_snackBar);
+      _nextQuestion();
     } else {
       debugPrint("False");
       final _snackBar = SnackBar(
@@ -112,6 +127,7 @@ class _QuizAppState extends State<QuizApp> {
         content: Text("You'r Incorrect"),
       );
       Scaffold.of(context).showSnackBar(_snackBar);
+      _nextQuestion();
     }
   }
 
