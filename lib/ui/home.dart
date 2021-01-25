@@ -1,5 +1,129 @@
+import 'package:MyFirstProject/model/question.dart';
 import 'package:flutter/material.dart';
 
+class QuizApp extends StatefulWidget {
+  @override
+  _QuizAppState createState() => _QuizAppState();
+}
+
+class _QuizAppState extends State<QuizApp> {
+  int _currentQuesntionIndex = 0;
+
+  List questionBank = [
+    Questions.name("This is Bangladesh's National Flag", true),
+    Questions.name("Is Sheikh Muzib is the national Hero ?", true),
+    Questions.name("Is he Muslim ?", true),
+    Questions.name("Sheikh Hasina is his daughter", true),
+    Questions.name("Taz Uddin Ahmed is the cousin of Sheikh Hasina", false),
+    Questions.name("Fakhruddin Ahmed is a banker", false),
+    Questions.name("Padhma Bridge is lenth of 2 km", false),
+    Questions.name("Metro Rail is now under Construction", true),
+    Questions.name("Dr. Dipu Moni is the law minister", false),
+    Questions.name("Obaidul Kader is a Mayor", false),
+    Questions.name("Liberation War period is 1971", true)
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Quiz App"),
+        centerTitle: true,
+        backgroundColor: Colors.blueAccent,
+      ),
+      backgroundColor: Colors.blueGrey,
+
+      //we use here another BuilderContext cause in out method _checkAns the BuildContext is not finding
+      //casue main BuildContext is no reciveing the value from scafold.of()
+
+      body: Builder(
+        builder: (BuildContext context) => Column(
+          children: [
+            Center(
+              child: Image.asset(
+                "images/flag.png",
+                height: 250,
+                width: 250,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                height: 120,
+                decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(color: Colors.blueGrey.shade400)),
+                child: Center(
+                  child: Center(
+                    child: Text(
+                      questionBank[_currentQuesntionIndex].questionText,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22.0),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                RaisedButton(
+                  onPressed: () => _checkAns(true, context),
+                  color: Colors.red,
+                  child: Text("TRUE"),
+                ),
+                RaisedButton(
+                  onPressed: () => _checkAns(false, context),
+                  color: Colors.red,
+                  child: Text("FALSE"),
+                ),
+                RaisedButton(
+                    onPressed: () => _nextQuestion(),
+                    color: Colors.red,
+                    child: Icon(
+                      Icons.arrow_forward,
+                    ))
+              ],
+            ),
+            Spacer(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  _checkAns(bool userChoise, BuildContext context) {
+    if (userChoise == questionBank[_currentQuesntionIndex].isCorrect) {
+      debugPrint("True");
+      final _snackBar = SnackBar(
+        duration: Duration(seconds: 1),
+        backgroundColor: Colors.green,
+        content: Text("You'r Correct"),
+      );
+      Scaffold.of(context).showSnackBar(_snackBar);
+    } else {
+      debugPrint("False");
+      final _snackBar = SnackBar(
+        duration: Duration(seconds: 1),
+        backgroundColor: Colors.red,
+        content: Text("You'r Incorrect"),
+      );
+      Scaffold.of(context).showSnackBar(_snackBar);
+    }
+  }
+
+  _nextQuestion() {
+    setState(() {
+      _currentQuesntionIndex =
+          (_currentQuesntionIndex + 1) % questionBank.length;
+    });
+  }
+}
+
+/*
 class BillingSystem extends StatefulWidget {
   @override
   _BillingSystemState createState() => _BillingSystemState();
@@ -473,3 +597,4 @@ class Home extends StatelessWidget {
     );
   }
 }
+*/
